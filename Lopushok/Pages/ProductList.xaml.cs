@@ -38,6 +38,7 @@ namespace Lopushok.Pages
 
         private void DataView()
         {
+            decimal Cost = 0;
             var tempDataProduct = Transition.Context.Product.ToList();
 
             if (ProductTypeBox.SelectedIndex > 0)
@@ -162,7 +163,7 @@ namespace Lopushok.Pages
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            Transition.MainFrame.Navigate(new PageEdit());
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)

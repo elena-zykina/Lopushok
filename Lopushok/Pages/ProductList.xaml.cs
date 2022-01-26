@@ -163,7 +163,7 @@ namespace Lopushok.Pages
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            Transition.MainFrame.Navigate(new PageEdit());
+            Transition.MainFrame.Navigate(new PageEdit((sender as Button).DataContext as Product));
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -178,6 +178,20 @@ namespace Lopushok.Pages
         private void ProductTypeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataView();
+        }
+
+        private void ListProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListProduct.SelectedItems.Count > 0)
+            {
+                BtnDelete.Visibility = Visibility.Visible;
+                BtnEdit.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BtnDelete.Visibility = Visibility.Hidden;
+                BtnEdit.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

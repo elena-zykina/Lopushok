@@ -28,5 +28,10 @@ namespace Lopushok
             FrmMain.Navigate(new ProductList());
             Transition.MainFrame = FrmMain;
         }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Transition.MainFrame.GoBack();
+        }
     }
 }

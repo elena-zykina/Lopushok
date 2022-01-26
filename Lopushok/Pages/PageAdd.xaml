@@ -11,11 +11,12 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Orientation="Vertical" Height="318" Margin="165,78,165,54">
+                    Orientation="Vertical" Height="auto" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Тип продукта: "
                            Style="{StaticResource mainTxtb}"/>
-                <ComboBox Name="TxtProductType"
+                <ComboBox Name="ProductTypeCombo"
+                          DisplayMemberPath="Title" SelectedValuePath="ID" SelectionChanged="ProductTypeCombo_SelectionChanged"
                          Style="{StaticResource mainCombo}"
                           Width="250"/>
             </StackPanel>
@@ -25,10 +26,17 @@
                 <TextBox Name="TxtName"
                          Style="{StaticResource mainTxt}"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal"/>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Цена: "
+                <TextBlock Text="Артикул: "
                            Style="{StaticResource mainTxtb}"/>
-                <TextBox Name="TxtCost"
+                <TextBox Name="TxtArticle"
+                         Style="{StaticResource mainTxt}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Описание: "
+                           Style="{StaticResource mainTxtb}"/>
+                <TextBox Name="TxtDescription"
                          Style="{StaticResource mainTxt}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -37,13 +45,21 @@
                 <TextBox Name="TxtImage"
                          Style="{StaticResource mainTxt}"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Мин. цена для агента: "
+                           Style="{StaticResource mainTxtb}"/>
+                <TextBox Name="TxtMinCost"
+                         Style="{StaticResource mainTxt}"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal">
             </StackPanel>
-            <Button Name="BtnSave"
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button Name="BtnSave"
                     Click="BtnSave_Click"
                     Style="{StaticResource mainBtn}"
                     Content="Сохранить"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

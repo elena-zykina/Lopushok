@@ -26,6 +26,7 @@ namespace Lopushok.Pages
             InitializeComponent();
 
             var filtItems = Transition.Context.ProductType.ToList();
+
             filtItems.Insert(0, new ProductType { Title = "Выберите тип" });
             ProductTypeCombo.ItemsSource = filtItems;
             ProductTypeCombo.SelectedIndex = 0;
@@ -49,9 +50,8 @@ namespace Lopushok.Pages
                     ProductType = ProductTypeCombo.SelectedItem as ProductType,
                     ArticleNumber = TxtArticle.Text,
                     Image = TxtImage.Text,
-                    ProductionPersonCount = Convert.ToInt32(TxtProdPersonCount.Text),
+                    MinCostForAgent = Convert.ToInt32(TxtMinCost.Text),
                     Description = TxtDescription.Text,
-                    ProductionWorkshopNumber = Convert.ToInt32(TxtWorkshop.Text),
                 };
                 Transition.Context.Product.Add(product);
                 Transition.Context.SaveChanges();

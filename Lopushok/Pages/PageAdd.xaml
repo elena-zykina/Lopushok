@@ -46,16 +46,12 @@
                          Style="{StaticResource mainTxt}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Кол-во человек для пр-ва: "
+                <TextBlock Text="Мин. цена для агента: "
                            Style="{StaticResource mainTxtb}"/>
-                <TextBox Name="TxtProdPersonCount"
+                <TextBox Name="TxtMinCost"
                          Style="{StaticResource mainTxt}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="№ Цеха: "
-                           Style="{StaticResource mainTxtb}"/>
-                <TextBox Name="TxtWorkshop"
-                         Style="{StaticResource mainTxt}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">

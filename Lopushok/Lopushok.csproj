@@ -114,6 +114,7 @@
     <Compile Include="DataBase\ProductMaterial.cs">
       <DependentUpon>ModelEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataBase\ProductObj.cs" />
     <Compile Include="DataBase\ProductSale.cs">
       <DependentUpon>ModelEF.tt</DependentUpon>
     </Compile>
@@ -201,6 +202,7 @@
       <DependentUpon>ModelEF.edmx</DependentUpon>
       <LastGenOutput>ModelEF.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Лопушок.ico" />
     <Resource Include="Pages\products\paper_0.jpeg" />
     <Resource Include="Pages\products\paper_1.jpeg" />
     <Resource Include="Pages\products\paper_10.jpeg" />

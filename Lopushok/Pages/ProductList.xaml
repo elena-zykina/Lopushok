@@ -145,11 +145,6 @@
                 <Button Content="Добавить"
                         Style="{StaticResource mainBtn}"
                         x:Name="AddBtn" Click="AddBtn_Click"/>
-                <TextBlock Text="Страница: " 
-                           VerticalAlignment="Center" HorizontalAlignment="Right"
-                           x:Name="CountPages"
-                           Margin="330 0 0 0"
-                           Style="{StaticResource CountTxtb}" Width="110"/>
             </WrapPanel>
         </Grid>
     </Grid>

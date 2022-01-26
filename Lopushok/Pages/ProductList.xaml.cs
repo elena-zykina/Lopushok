@@ -94,8 +94,6 @@ namespace Lopushok.Pages
                     }
             }
             ListProduct.ItemsSource = tempDataProduct;
-
-            CountPages.Text = $"Страница: {"1"} из {"1"}";
         }
 
         private void SearchProductBox_TextChanged(object sender, TextChangedEventArgs e)

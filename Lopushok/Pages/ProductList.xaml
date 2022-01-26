@@ -60,51 +60,52 @@
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="25*"/>
                 </Grid.RowDefinitions>
 
                 <ScrollViewer>
                     <WrapPanel Orientation="Vertical">
-                        <ListBox Name="ListProduct"
-                         Background="Transparent"
-                         Width="670"
-                         BorderBrush="Transparent">
+                        <ListBox HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                                 Margin="90 0 0 80"
+                            x:Name="ListProduct"
+                            Background="Transparent"
+                            Width="700"
+                            BorderBrush="Transparent">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <ListBoxItem
                                         BorderBrush="Black"
                                         Background="Transparent"
-                                        Width="650">
+                                        Width="670">
                                         <WrapPanel Orientation="Vertical">
                                             <WrapPanel Orientation="Horizontal"
-                                                       HorizontalAlignment="Left">
-                                                <TextBlock Name="StringImage"
-                                                           Visibility="Hidden"
-                                                           Text="{Binding Image, StringFormat=../{0}}"/>
-                                                <Image Source="{Binding Text, ElementName=StringImage}"
-                                                                  Style="{StaticResource ImgSource}"/>
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center">
+                                                <Image Source="{Binding Image, StringFormat=../{0}}"
+                                                       Style="{StaticResource ImgSource}"/>
                                                 <WrapPanel Orientation="Vertical">
                                                     <WrapPanel Orientation="Horizontal">
                                                         <TextBlock Text="{Binding ProductType.Title}"
                                                                Margin="10 0 10 0"
-                                                               Name="TxtProductType"
+                                                               x:Name="TxtProductType"
                                                                Style="{StaticResource productTxtb}"/>
                                                         <TextBlock Text="|"/>
                                                         <TextBlock Text="{Binding Title}"
-                                                               Margin="10 0 0 0"
-                                                               Name="TxtNameProduct"
+                                                               Margin="10 0 10 0"
+                                                               x:Name="TxtNameProduct"
                                                                Style="{StaticResource productTxtb}"/>
                                                     </WrapPanel>
                                                     <WrapPanel Orientation="Horizontal">
                                                         <TextBlock Text="{Binding ArticleNumber}"
-                                                                   Margin="10 0 0 0"
-                                                                   Name="TxtProductArticle"
+                                                                   x:Name="TxtProductArticle"
                                                                    Style="{StaticResource productTxtb}"/>
                                                     </WrapPanel>
                                                 </WrapPanel>
                                                 <WrapPanel Orientation="Horizontal" 
                                                            Margin="50,0,0,0">
                                                     <TextBlock x:Name="ProductCost"
+                                                               Text="{Binding ProductCost, StringFormat=/{0:0.00}/рублей}"
                                                                HorizontalAlignment="Right"
                                                                VerticalAlignment="Top"
                                                                Style="{StaticResource mainTxtb}"/>
@@ -113,14 +114,19 @@
                                                                VerticalAlignment="Top"
                                                                Style="{StaticResource mainTxtb}"/>
                                                 </WrapPanel>
+                                                <WrapPanel Orientation="Horizontal">
+                                                    <TextBlock x:Name="ProductMaterials"
+                                                               Text="{Binding ProductMaterial}"
+                                                               Style="{StaticResource mainTxtb}"/>
+                                                </WrapPanel>
                                             </WrapPanel>
                                             <WrapPanel Orientation="Horizontal"
                                                         HorizontalAlignment="Left">
-                                                <Button Name="BtnEdit"
+                                                <Button x:Name="BtnEdit"
                                                         Style="{StaticResource mainBtn}"
                                                         Click="BtnEdit_Click"
                                                         Content="Редактировать"/>
-                                                <Button Name="BtnDelete"
+                                                <Button x:Name="BtnDelete"
                                                         Margin="10 0 0 0"
                                                         Style="{StaticResource mainBtn}"
                                                         Click="BtnEdit_Click"

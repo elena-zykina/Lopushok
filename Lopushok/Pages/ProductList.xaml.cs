@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Lopushok.DataBase;
+using Lopushok.Pages;
 
 namespace Lopushok.Pages
 {
@@ -50,7 +51,6 @@ namespace Lopushok.Pages
                     .Where(p => p.Title.ToLower().Contains(SearchProductBox.Text.ToLower())
                     || p.Description.ToLower().Contains(SearchProductBox.Text.ToLower()))
                     .ToList();
-
             switch (SortCBox.SelectedIndex)
             {
                 case 1:

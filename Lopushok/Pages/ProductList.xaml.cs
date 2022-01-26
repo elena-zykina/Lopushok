@@ -28,9 +28,9 @@ namespace Lopushok.Pages
             InitializeComponent();
             var filtItems = Transition.Context.ProductType.ToList();
             filtItems.Insert(0, new ProductType { Title = "Все элементы" });
-            FiltCBox.ItemsSource = filtItems;
+            ProductTypeBox.ItemsSource = filtItems;
 
-            FiltCBox.SelectedIndex = 0;
+            ProductTypeBox.SelectedIndex = 0;
             SortCBox.SelectedIndex = 0;
 
             ListProduct.ItemsSource = Transition.Context.Product.ToList();
@@ -40,16 +40,13 @@ namespace Lopushok.Pages
         {
             var tempDataProduct = Transition.Context.Product.ToList();
 
-            if (FiltCBox.SelectedIndex > 0)
-                tempDataProduct = tempDataProduct
-                    .Where(p => p.ProductTypeID == (FiltCBox.SelectedItem as ProductType).ID)
-                    .ToList();
+            if (ProductTypeBox.SelectedIndex > 0)
+                tempDataProduct = tempDataProduct.Where(p => p.ProductTypeID == (ProductTypeBox.SelectedItem as ProductType).ID).ToList();
 
-            if (SearchProductBox.Text != "Введите для поиска" &&
-                SearchProductBox.Text != null)
+            if (SearchProductBox.Text != "Введите для поиска" && SearchProductBox.Text != null)
                 tempDataProduct = tempDataProduct
                     .Where(p => p.Title.ToLower().Contains(SearchProductBox.Text.ToLower())
-                    || p.Description.ToLower().Contains(SearchProductBox.Text.ToLower()))
+                    || p.ArticleNumber.ToLower().Contains(SearchProductBox.Text.ToLower()))
                     .ToList();
             switch (SortCBox.SelectedIndex)
             {
@@ -133,11 +130,6 @@ namespace Lopushok.Pages
             DataView();
         }
 
-        private void FiltCBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            DataView();
-        }
-
         private void ProductsView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
@@ -145,25 +137,48 @@ namespace Lopushok.Pages
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Transition.MainFrame.Navigate(new PageAdd());
         }
 
-        private void DeleteProdBtn_Click(object sender, RoutedEventArgs e)
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            var dltData = ListProduct.SelectedItems.Cast<Product>().ToList();
 
-        }
+            if (MessageBox.Show($"Вы действительно хотите удалить элемент?",
+                "Удаление продуктов", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    Transition.Context.Product.RemoveRange(dltData);
+                    Transition.Context.SaveChanges();
+                    MessageBox.Show("Данные успешно удалены", "Удаление продуктов", MessageBoxButton.OK, MessageBoxImage.Information);
 
-        private void ProductsView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ListProduct.SelectedItems.Count > 0)
-                DeleteProdBtn.Visibility = Visibility.Visible;
-            else
-                DeleteProdBtn.Visibility = Visibility.Hidden;
+                    DataView();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show($"При сохранении произошла ошибка:\n{error.Message}", "Удаление продуктов", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                Transition.Context.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DataView();
+            }
+        }
+
+        private void ProductTypeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataView();
         }
     }
 }

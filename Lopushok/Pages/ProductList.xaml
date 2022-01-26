@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Lopushok.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="900"
-      Title="Просмотр продукции">
+      Title="Просмотр продукции" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
         <Grid>
@@ -34,19 +34,23 @@
                               Style="{StaticResource mainCombo}" Width="179">
                         <ComboBoxItem>
                             <TextBlock Text="Нет"
-                                       Style="{StaticResource mainTxtb}"/>
+                                       Style="{StaticResource mainTxtb}"
+                                       Width="270"/>
                         </ComboBoxItem>
                         <ComboBoxItem>
                             <TextBlock Text="Наименование"
-                                       Style="{StaticResource mainTxtb}"/>
+                                       Style="{StaticResource mainTxtb}"
+                                       Width="270"/>
                         </ComboBoxItem>
                         <ComboBoxItem>
                             <TextBlock Text="Номер производственного цеха"
-                                       Style="{StaticResource mainTxtb}"/>
+                                       Style="{StaticResource mainTxtb}"
+                                       Width="270"/>
                         </ComboBoxItem>
                         <ComboBoxItem>
                             <TextBlock Text="Минимальная стоимость для агента"
-                                       Style="{StaticResource mainTxtb}"/>
+                                       Style="{StaticResource mainTxtb}"
+                                       Width="270"/>
                         </ComboBoxItem>
                     </ComboBox>
                     <CheckBox Content="По убыванию" Padding="4, -2" VerticalAlignment="Center"
@@ -54,8 +58,8 @@
                               Style="{StaticResource mainCheck}" Width="103"/>
                 </WrapPanel>
 
-                <ComboBox Grid.Column="2" DisplayMemberPath="Name"
-                          x:Name="FiltCBox" SelectionChanged="FiltCBox_SelectionChanged"
+                <ComboBox Grid.Column="2" DisplayMemberPath="Title"
+                          x:Name="ProductTypeBox" SelectionChanged="ProductTypeBox_SelectionChanged"
                           Style="{StaticResource mainCombo}" Margin="90,10,10,10"/>
             </Grid>
             <Grid Grid.Row="1">
@@ -98,20 +102,17 @@
                                                     </WrapPanel>
                                                     <WrapPanel Orientation="Horizontal">
                                                         <TextBlock Text="{Binding ArticleNumber}"
+                                                                   Margin="10 0 10 0"
                                                                    x:Name="TxtProductArticle"
                                                                    Style="{StaticResource productTxtb}"/>
                                                     </WrapPanel>
                                                 </WrapPanel>
                                                 <WrapPanel Orientation="Horizontal" 
                                                            Margin="50,0,0,0">
-                                                    <TextBlock x:Name="ProductCost"
+                                                    <TextBlock HorizontalAlignment="Right"
+                                                               VerticalAlignment="Top" 
+                                                               x:Name="ProductCost"
                                                                Text="{Binding ProductCost, StringFormat=/{0:0.00}/рублей}"
-                                                               HorizontalAlignment="Right"
-                                                               VerticalAlignment="Top"
-                                                               Style="{StaticResource mainTxtb}"/>
-                                                    <TextBlock Text=" рублей"
-                                                               HorizontalAlignment="Right"
-                                                               VerticalAlignment="Top"
                                                                Style="{StaticResource mainTxtb}"/>
                                                 </WrapPanel>
                                                 <WrapPanel Orientation="Horizontal">
@@ -129,7 +130,7 @@
                                                 <Button x:Name="BtnDelete"
                                                         Margin="10 0 0 0"
                                                         Style="{StaticResource mainBtn}"
-                                                        Click="BtnEdit_Click"
+                                                        Click="BtnDelete_Click"
                                                         Content="Удалить"/>
                                             </WrapPanel>
                                         </WrapPanel>
@@ -144,9 +145,6 @@
                 <Button Content="Добавить"
                         Style="{StaticResource mainBtn}"
                         x:Name="AddBtn" Click="AddBtn_Click"/>
-                <Button Content="Удалить" Visibility="Hidden"
-                        Style="{StaticResource mainBtn}"
-                        x:Name="DeleteProdBtn" Click="DeleteProdBtn_Click"/>
                 <TextBlock Text="Страница: " 
                            VerticalAlignment="Center" HorizontalAlignment="Right"
                            x:Name="CountPages"

@@ -40,6 +40,30 @@ namespace Lopushok.Pages
                 tempDataProduct = tempDataProduct.Where(p => p.ProductTypeID == (ProductTypeCombo.SelectedItem as ProductType).ID).ToList();
         }
 
+        private void DataView()
+        {
+            try
+            {
+                Product product = new Product()
+                {
+                    Title = TxtName.Text,
+                    ProductType = ProductTypeCombo.SelectedItem as ProductType,
+                    ArticleNumber = TxtArticle.Text,
+                    Image = TxtImage.Text,
+                    MinCostForAgent = Convert.ToInt32(TxtMinCost.Text),
+                    Description = TxtDescription.Text,
+                };
+                Transition.Context.Product.Add(product);
+                Transition.Context.SaveChanges();
+                MessageBox.Show("Данные успешно добавлены", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message.ToString());
+            }
+            Transition.MainFrame.GoBack();
+        }
+
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -64,9 +88,9 @@ namespace Lopushok.Pages
             Transition.MainFrame.GoBack();
         }
 
-        private void BtnSave_Click_1(object sender, RoutedEventArgs e)
+        private void ProductTypeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            DataView();
         }
     }
 }

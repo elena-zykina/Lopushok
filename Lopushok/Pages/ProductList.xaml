@@ -8,165 +8,168 @@
       d:DesignHeight="700" d:DesignWidth="900"
       Title="Просмотр продукции" IsVisibleChanged="Page_IsVisibleChanged">
 
+    <Page.Resources>
+        <BitmapImage x:Key="Null" UriSource="..//Resources/picture.png"/>
+    </Page.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="400"/>
-                    <ColumnDefinition Width="300"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBox HorizontalAlignment="Stretch" 
+            <TextBox HorizontalAlignment="Stretch" 
                          Style="{StaticResource mainTxt}"
                          Width="auto" Text="Введите для поиска"
                          x:Name="SearchProductBox" TextChanged="SearchProductBox_TextChanged"
                          LostFocus="SearchProductBox_LostFocus" GotFocus="SearchProductBox_GotFocus" Grid.ColumnSpan="2" Margin="10,0,222,10" VerticalAlignment="Bottom"/>
 
-                <WrapPanel Grid.Column="1" HorizontalAlignment="Center" Margin="183,0,215,0" Width="302" Grid.ColumnSpan="2">
-                    <ComboBox x:Name="SortCBox" SelectionChanged="SortCBox_SelectionChanged"
+            <WrapPanel Grid.Column="1" HorizontalAlignment="Center" Margin="183,0,215,0" Width="302" Grid.ColumnSpan="2">
+                <ComboBox x:Name="SortCBox" SelectionChanged="SortCBox_SelectionChanged"
                               Style="{StaticResource mainCombo}" Width="179">
-                        <ComboBoxItem>
-                            <TextBlock Text="Нет"
+                    <ComboBoxItem>
+                        <TextBlock Text="Нет"
                                        Style="{StaticResource mainTxtb}"
                                        Width="270"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Text="Наименование"
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Наименование"
                                        Style="{StaticResource mainTxtb}"
                                        Width="270"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Text="Номер производственного цеха"
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Номер производственного цеха"
                                        Style="{StaticResource mainTxtb}"
                                        Width="270"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Text="Минимальная стоимость для агента"
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Минимальная стоимость для агента"
                                        Style="{StaticResource mainTxtb}"
                                        Width="270"/>
-                        </ComboBoxItem>
-                    </ComboBox>
-                    <CheckBox Content="По убыванию" Padding="4, -2" VerticalAlignment="Center"
+                    </ComboBoxItem>
+                </ComboBox>
+                <CheckBox Content="По убыванию" Padding="4, -2" VerticalAlignment="Center"
                           x:Name="CheckSort" Checked="CheckSort_Checked" Unchecked="CheckSort_Unchecked"
                               Style="{StaticResource mainCheck}" Width="103"/>
-                </WrapPanel>
+            </WrapPanel>
 
-                <ComboBox Grid.Column="2" DisplayMemberPath="Title"
+            <ComboBox Grid.Column="2" DisplayMemberPath="Title"
                           x:Name="ProductTypeBox" SelectionChanged="ProductTypeBox_SelectionChanged"
                           Style="{StaticResource mainCombo}" Margin="90,10,10,10"/>
-            </Grid>
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25*"/>
-                </Grid.RowDefinitions>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*"/>
+            </Grid.RowDefinitions>
 
-                <ScrollViewer>
-                    <WrapPanel Orientation="Vertical">
-                        <ListView HorizontalAlignment="Center"
+            <ScrollViewer>
+                <WrapPanel Orientation="Vertical">
+                    <ListView HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                                  Margin="90 0 0 80"
-                            x:Name="ListProduct"
-                            Background="Transparent" Width="700"
-                            BorderBrush="Transparent"
-                            SelectionChanged="ListProduct_SelectionChanged">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="ListBoxItem">
-                                                        <Border BorderBrush="Black"
+                                 x:Name="ListProduct"
+                                 Background="Transparent" Width="700"
+                                 BorderBrush="Transparent"
+                                 SelectionChanged="ListProduct_SelectionChanged">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <Border BorderBrush="Black"
                                                         Background="Transparent"
                                                         Width="670"
                                                         Height="170"
                                                         x:Name="BorderTest" BorderThickness="1"
                                                         Margin="0 10 0 0">
-                                                            <WrapPanel Orientation="Vertical">
-                                                                <WrapPanel Orientation="Horizontal"
+                                                <WrapPanel Orientation="Vertical">
+                                                    <WrapPanel Orientation="Horizontal"
                                                        HorizontalAlignment="Center"
                                                        VerticalAlignment="Center">
-                                                                    <Border BorderBrush="Black"
+                                                        <Border BorderBrush="Black"
                                                                 Background="Transparent">
-                                                                        <WrapPanel Orientation="Vertical"
+                                                            <WrapPanel Orientation="Vertical"
                                                            Width="150">
-                                                                            <Image Source="{Binding Image, StringFormat=../{0}}"
-                                                                        Style="{StaticResource ImgSource}"/>
-                                                                        </WrapPanel>
-                                                                    </Border>
-                                                                    <Border BorderBrush="Black">
-                                                                        <WrapPanel Orientation="Vertical"
+                                                                <Image Margin="10 10 10 10"
+                                                                       Grid.Row="0" 
+                                                                       Source="{Binding Image, FallbackValue={StaticResource Null}}" 
+                                                                       Width="130"/>
+                                                            </WrapPanel>
+                                                        </Border>
+                                                        <Border BorderBrush="Black">
+                                                            <WrapPanel Orientation="Vertical"
                                                            Width="350">
-                                                                            <WrapPanel Orientation="Horizontal">
-                                                                                <TextBlock Text="{Binding ProductType.Title}"
+                                                                <WrapPanel Orientation="Horizontal">
+                                                                    <TextBlock Text="{Binding ProductType.Title}"
                                                                Margin="10 0 10 0"
                                                                x:Name="TxtProductType"
                                                                Style="{StaticResource productTxtb}"/>
-                                                                                <TextBlock Text="|"/>
-                                                                                <TextBlock Text="{Binding Title}"
+                                                                    <TextBlock Text="|"/>
+                                                                    <TextBlock Text="{Binding Title}"
                                                                Margin="10 0 10 0"
                                                                x:Name="TxtNameProduct"
                                                                Style="{StaticResource productTxtb}"/>
-                                                                            </WrapPanel>
-                                                                            <WrapPanel Orientation="Horizontal">
-                                                                                <TextBlock Text="{Binding ArticleNumber}"
+                                                                </WrapPanel>
+                                                                <WrapPanel Orientation="Horizontal">
+                                                                    <TextBlock Text="{Binding ArticleNumber}"
                                                                    Margin="10 0 10 0"
                                                                    x:Name="TxtProductArticle"
                                                                    Style="{StaticResource productTxtb}"/>
-                                                                            </WrapPanel>
-                                                                            <WrapPanel Orientation="Horizontal">
-                                                                                <TextBlock x:Name="ProductMaterials"
+                                                                </WrapPanel>
+                                                                <WrapPanel Orientation="Horizontal">
+                                                                    <TextBlock x:Name="ProductMaterials"
                                                                Text="Материалы: "
                                                                Margin="10 0 0 0"
                                                                Style="{StaticResource productTxtb}"/>
-                                                                            </WrapPanel>
-                                                                        </WrapPanel>
-                                                                    </Border>
-                                                                </WrapPanel>
-                                                                <WrapPanel Orientation="Horizontal"
-                                                       HorizontalAlignment="Right"
-                                                       VerticalAlignment="Top">
-                                                                    <TextBlock Visibility="Hidden"
-                                                    x:Name="ProductCost"
-                                                           Text="рублей"
-                                                           Style="{StaticResource mainTxtb}"/>
                                                                 </WrapPanel>
                                                             </WrapPanel>
                                                         </Border>
-                                                        <ControlTemplate.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter TargetName="BorderTest" Property="Background" Value="#CEFFF9"/>
-                                                                <Setter TargetName="BorderTest" Property="Cursor" Value="Hand"/>
-                                                            </Trigger>
-                                                            <Trigger Property="IsSelected" Value="True">
-                                                                <Setter TargetName="BorderTest" Property="Background" Value="#00CC76"/>
-                                                            </Trigger>
-                                                        </ControlTemplate.Triggers>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                        </ListView>
-                    </WrapPanel>
-                </ScrollViewer>
-            </Grid>
-            <WrapPanel Grid.Row="2">
-                <Button Content="Добавить"
+                                                    </WrapPanel>
+                                                    <WrapPanel Orientation="Horizontal"
+                                                       HorizontalAlignment="Right"
+                                                       VerticalAlignment="Top">
+                                                        <TextBlock Visibility="Hidden"
+                                                    x:Name="ProductCost"
+                                                           Text="рублей"
+                                                           Style="{StaticResource mainTxtb}"/>
+                                                    </WrapPanel>
+                                                </WrapPanel>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="BorderTest" Property="Background" Value="#CEFFF9"/>
+                                                    <Setter TargetName="BorderTest" Property="Cursor" Value="Hand"/>
+                                                </Trigger>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter TargetName="BorderTest" Property="Background" Value="#00CC76"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </WrapPanel>
+            </ScrollViewer>
+        </Grid>
+        <WrapPanel Grid.Row="2">
+            <Button Content="Добавить"
                         Style="{StaticResource mainBtn}"
                         x:Name="AddBtn" Click="AddBtn_Click"/>
-                <Button Content="Изменить" Visibility="Hidden"
+            <Button Content="Изменить" Visibility="Hidden"
                         Style="{StaticResource mainBtn}"
                         x:Name="BtnEdit" Click="BtnEdit_Click"/>
-                <Button Content="Удалить" Visibility="Hidden"
+            <Button Content="Удалить" Visibility="Hidden"
                         Style="{StaticResource mainBtn}"
                         x:Name="BtnDelete" Click="BtnDelete_Click"/>
-            </WrapPanel>
-        </Grid>
+        </WrapPanel>
     </Grid>
 </Page>

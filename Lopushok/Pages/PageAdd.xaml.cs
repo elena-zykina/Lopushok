@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Lopushok.DataBase;
 
 namespace Lopushok.Pages
 {
@@ -23,6 +24,20 @@ namespace Lopushok.Pages
         public PageAdd()
         {
             InitializeComponent();
+
+            var filtItems = Transition.Context.ProductType.ToList();
+
+            filtItems.Insert(0, new ProductType { Title = "Выберите тип" });
+            ProductTypeCombo.ItemsSource = filtItems;
+            ProductTypeCombo.SelectedIndex = 0;
+        }
+
+        private void DataView()
+        {
+            var tempDataProduct = Transition.Context.Product.ToList();
+
+            if (ProductTypeCombo.SelectedIndex > 0)
+                tempDataProduct = tempDataProduct.Where(p => p.ProductTypeID == (ProductTypeCombo.SelectedItem as ProductType).ID).ToList();
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)

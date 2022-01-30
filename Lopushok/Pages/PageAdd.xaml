@@ -15,7 +15,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Тип продукта: "
                            Style="{StaticResource mainTxtb}"/>
-                <ComboBox Name="TxtProductType"
+                <ComboBox Name="ProductTypeCombo"
                          Style="{StaticResource mainCombo}"
                           Width="250"/>
             </StackPanel>

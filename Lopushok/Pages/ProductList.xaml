@@ -78,75 +78,75 @@
                             SelectionChanged="ListProduct_SelectionChanged">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
-                                        <Setter Property="Template">
-                                            <Setter.Value>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
                                             <ControlTemplate TargetType="ListBoxItem">
-                                                <Border BorderBrush="Black"
+                                                        <Border BorderBrush="Black"
                                                         Background="Transparent"
                                                         Width="670"
                                                         Height="170"
                                                         x:Name="BorderTest" BorderThickness="1"
                                                         Margin="0 10 0 0">
-                                                    <WrapPanel Orientation="Vertical">
-                                                        <WrapPanel Orientation="Horizontal"
+                                                            <WrapPanel Orientation="Vertical">
+                                                                <WrapPanel Orientation="Horizontal"
                                                        HorizontalAlignment="Center"
                                                        VerticalAlignment="Center">
-                                                            <Border BorderBrush="Black"
+                                                                    <Border BorderBrush="Black"
                                                                 Background="Transparent">
-                                                                <WrapPanel Orientation="Vertical"
+                                                                        <WrapPanel Orientation="Vertical"
                                                            Width="150">
-                                                                    <Image Source="{Binding Image, StringFormat=../{0}}"
-                                                                           Style="{StaticResource ImgSource}"/>
-                                                                </WrapPanel>
-                                                            </Border>
-                                                            <Border BorderBrush="Black">
-                                                                <WrapPanel Orientation="Vertical"
+                                                                            <Image Source="{Binding Image, StringFormat=../{0}}"
+                                                                        Style="{StaticResource ImgSource}"/>
+                                                                        </WrapPanel>
+                                                                    </Border>
+                                                                    <Border BorderBrush="Black">
+                                                                        <WrapPanel Orientation="Vertical"
                                                            Width="350">
-                                                                    <WrapPanel Orientation="Horizontal">
-                                                                        <TextBlock Text="{Binding ProductType.Title}"
+                                                                            <WrapPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="{Binding ProductType.Title}"
                                                                Margin="10 0 10 0"
                                                                x:Name="TxtProductType"
                                                                Style="{StaticResource productTxtb}"/>
-                                                                        <TextBlock Text="|"/>
-                                                                        <TextBlock Text="{Binding Title}"
+                                                                                <TextBlock Text="|"/>
+                                                                                <TextBlock Text="{Binding Title}"
                                                                Margin="10 0 10 0"
                                                                x:Name="TxtNameProduct"
                                                                Style="{StaticResource productTxtb}"/>
-                                                                    </WrapPanel>
-                                                                    <WrapPanel Orientation="Horizontal">
-                                                                        <TextBlock Text="{Binding ArticleNumber}"
+                                                                            </WrapPanel>
+                                                                            <WrapPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="{Binding ArticleNumber}"
                                                                    Margin="10 0 10 0"
                                                                    x:Name="TxtProductArticle"
                                                                    Style="{StaticResource productTxtb}"/>
-                                                                    </WrapPanel>
-                                                                    <WrapPanel Orientation="Horizontal">
-                                                                        <TextBlock x:Name="ProductMaterials"
+                                                                            </WrapPanel>
+                                                                            <WrapPanel Orientation="Horizontal">
+                                                                                <TextBlock x:Name="ProductMaterials"
                                                                Text="Материалы: "
                                                                Margin="10 0 0 0"
                                                                Style="{StaticResource productTxtb}"/>
-                                                                    </WrapPanel>
+                                                                            </WrapPanel>
+                                                                        </WrapPanel>
+                                                                    </Border>
                                                                 </WrapPanel>
-                                                            </Border>
-                                                        </WrapPanel>
-                                                        <WrapPanel Orientation="Horizontal"
+                                                                <WrapPanel Orientation="Horizontal"
                                                        HorizontalAlignment="Right"
                                                        VerticalAlignment="Top">
-                                                            <TextBlock Visibility="Hidden"
+                                                                    <TextBlock Visibility="Hidden"
                                                     x:Name="ProductCost"
                                                            Text="рублей"
                                                            Style="{StaticResource mainTxtb}"/>
-                                                        </WrapPanel>
-                                                    </WrapPanel>
-                                                </Border>
-                                                <ControlTemplate.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter TargetName="BorderTest" Property="Background" Value="#CEFFF9"/>
-                                                        <Setter TargetName="BorderTest" Property="Cursor" Value="Hand"/>
-                                                    </Trigger>
-                                                    <Trigger Property="IsSelected" Value="True">
-                                                        <Setter TargetName="BorderTest" Property="Background" Value="#00CC76"/>
-                                                    </Trigger>
-                                                </ControlTemplate.Triggers>
+                                                                </WrapPanel>
+                                                            </WrapPanel>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="BorderTest" Property="Background" Value="#CEFFF9"/>
+                                                                <Setter TargetName="BorderTest" Property="Cursor" Value="Hand"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsSelected" Value="True">
+                                                                <Setter TargetName="BorderTest" Property="Background" Value="#00CC76"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>

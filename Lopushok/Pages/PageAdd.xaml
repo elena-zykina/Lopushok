@@ -51,8 +51,6 @@
                 <TextBox Name="TxtMinCost"
                          Style="{StaticResource mainTxt}"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-            </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
                 <Button Name="BtnSave"
